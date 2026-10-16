@@ -1,8 +1,6 @@
 # Лабораторная работа 3. Хэш-таблицы
-
-# ============================================================
 # Задача A: Проверка подмножества
-# ============================================================
+
 def is_subset(arr1, arr2):
     """
     Проверяет, является ли arr2 подмножеством arr1.
@@ -15,9 +13,7 @@ def is_subset(arr1, arr2):
     return True
 
 
-# ============================================================
 # Задача B: Первый неповторяющийся символ
-# ============================================================
 def first_unique_char(s):
     """
     Возвращает первый неповторяющийся символ в строке.
@@ -33,9 +29,7 @@ def first_unique_char(s):
     return None
 
 
-# ============================================================
 # Задача C: Длина самого длинного палиндрома
-# ============================================================
 def longest_palindrome(s):
     """
     Возвращает длину самого длинного палиндрома,
@@ -62,9 +56,7 @@ def longest_palindrome(s):
     return length
 
 
-# ============================================================
 # Задача D: Проверка анаграмм
-# ============================================================
 def is_anagram(s, t):
     """
     Проверяет, является ли t анаграммой s.
@@ -85,9 +77,7 @@ def is_anagram(s, t):
     return True
 
 
-# ============================================================
 # Тестирование
-# ============================================================
 def run_tests():
     print("=" * 60)
     print("ЗАДАЧА A: Проверка подмножества")
@@ -100,7 +90,7 @@ def run_tests():
 
     for arr1, arr2, expected in test_cases_a:
         result = is_subset(arr1, arr2)
-        status = "✓" if result == expected else "✗"
+        status = "[+]" if result == expected else "[-]"
         print(f"{status} {arr2} подмножество {arr1}: {result} (ожидалось {expected})")
 
     print("\n" + "=" * 60)
@@ -116,7 +106,7 @@ def run_tests():
 
     for s, expected in test_cases_b:
         result = first_unique_char(s)
-        status = "✓" if result == expected else "✗"
+        status = "[+]" if result == expected else "[-]"
         print(f"{status} Первый уникальный в '{s}': {result} (ожидалось {expected})")
 
     print("\n" + "=" * 60)
@@ -137,7 +127,7 @@ def run_tests():
 
     for s, expected in test_cases_c:
         result = longest_palindrome(s)
-        status = "✓" if result == expected else "✗"
+        status = "[+]" if result == expected else "[-]"
         print(f"{status} Длина палиндрома для '{s[:30]}...': {result} (ожидалось {expected})")
 
     print("\n" + "=" * 60)
@@ -156,7 +146,7 @@ def run_tests():
 
     for s, t, expected in test_cases_d:
         result = is_anagram(s, t)
-        status = "✓" if result == expected else "✗"
+        status = "[+]" if result == expected else "[-]"
         print(f"{status} '{t}' анаграмма '{s}': {result} (ожидалось {expected})")
 
 

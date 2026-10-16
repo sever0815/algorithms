@@ -1,7 +1,7 @@
 # Лабораторная работа 3 Хэш-таблицы
 Решить следующие задачи
 
-A:
+# A:
 
 Нужно определить, служит ли один массив (меньший) подмножеством другого (большего). Реализуйте с использованием хэш-таблиц.
 
@@ -18,14 +18,14 @@ A:
 Второй массив не будет подмножеством первого
 
 ——————————————————————————————
-B:
+# B:
 
 Напишите функцию, которая возвращает первый неповторяющийся символ в строке. Реализуйте с использованием хэш-таблиц.
 
 Пример 
 
 В строке "minimum" есть два неповторяющихся символа — "n" и "u", поэтому ваша функция должна возвратить "n", так как он встречается первым. Временная сложность вашей функции должна быть равна O(N).
-C:
+# C:
 
 Дана строка s, состоящая из строчных или заглавных букв. Нужно вернуть длину самого длинного палиндрома, который можно построить с помощью этих букв. Можно использовать не все буквы в строке s. Буква в палиндроме может встречаться только столько же или меньше раз, сколько встречается в строке.
 
@@ -58,7 +58,7 @@ C:
 "abbbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbabbab" - 1122
 
 ———————————————————————————
-D:
+# D:
 
 Даны две строки s и t. Вернуть true, если t это анаграмма из s, и false в противном случае. Анаграммы — это слова, содержащие одни и те же символы в разном порядке. Реализуйте с использованием хэш-таблиц.
 
@@ -80,4 +80,3 @@ D:
 "мышка", "камыш" - true
 "тормони", "монитор" - true
 "тоемони", "монитор" - false
- 
