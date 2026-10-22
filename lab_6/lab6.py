@@ -40,9 +40,7 @@ def build_tree(values):
     return root
 
 
-# ============================================================
 # Задача A: Проверка симметричности дерева
-# ============================================================
 def is_symmetric(root: Optional[TreeNode]) -> bool:
     """
     Проверяет, является ли дерево зеркальным отражением самого себя.
@@ -62,9 +60,7 @@ def is_symmetric(root: Optional[TreeNode]) -> bool:
     return is_mirror(root.left, root.right)
 
 
-# ============================================================
 # Задача B: Диаметр дерева
-# ============================================================
 def diameter_of_binary_tree(root: Optional[TreeNode]) -> int:
     """
     Возвращает длину диаметра дерева (наибольший путь между двумя узлами).
@@ -88,9 +84,7 @@ def diameter_of_binary_tree(root: Optional[TreeNode]) -> int:
     return diameter
 
 
-# ============================================================
 # Задача D: Проверка поддерева
-# ============================================================
 def is_subtree(root: Optional[TreeNode], sub_root: Optional[TreeNode]) -> bool:
     """
     Проверяет, является ли sub_root поддеревом root.
@@ -117,9 +111,7 @@ def is_same_tree(p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
             is_same_tree(p.right, q.right))
 
 
-# ============================================================
 # Тестирование
-# ============================================================
 def run_tests():
     print("=" * 70)
     print("Лабораторная работа 6. Деревья")
