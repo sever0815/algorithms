@@ -1,10 +1,8 @@
-GREEN = 4
-PURPLE = 5
-BLUE = 6
-RED = 3
-YELLOW = 2
-TRANSFER = 1
+# Время в минутах
+GREEN, PURPLE, BLUE, RED, YELLOW, TRANSFER = 4, 5, 6, 3, 2, 1
+INF = float("inf")
 
+# Рёбра: (станция 1, станция 2, минуты)
 edges = [
     ("Спасская", "Достоевская", YELLOW),
     ("Достоевская", "Лиговский проспект", YELLOW),
@@ -22,6 +20,7 @@ edges = [
     ("Адмиралтейская", "Садовая", PURPLE),
     ("Садовая", "Звенигородская", PURPLE),
     ("Звенигородская", "Обводный канал", PURPLE),
+    # переходы
     ("Невский проспект", "Гостиный двор", TRANSFER),
     ("Площадь Восстания", "Маяковская", TRANSFER),
     ("Достоевская", "Владимирская", TRANSFER),
@@ -31,53 +30,57 @@ edges = [
     ("Спасская", "Садовая", TRANSFER),
 ]
 
+# Граф: станция -> {сосед: минуты}. Метро ходит в обе стороны, поэтому добавляем оба направления.
+# Из списка рёбер собираем словарь "станция -> {сосед: минуты}"
+graph = {}
+for a, b, w in edges:
+    graph.setdefault(a, {})[b] = w
+    graph.setdefault(b, {})[a] = w
 
-def shortest_path(start, end):
-    dist = {start: 0}  # минуты до станции
-    prev = {}  # откуда пришли (для восстановления маршрута)
-    queue = [start]  # станции, до которых дошли, но соседей еще не раскрыли
 
-    while queue:
-        cur = min(queue, key=lambda s: dist[s])
-        queue.remove(cur)
+def dijkstra(start, end):
+    time = {s: INF for s in graph}   # лучшее найденное время до каждой станции
+    prev = {}                        # откуда пришли на станцию (для восстановления пути)
+    time[start] = 0
+    unvisited = set(graph)          # станции, которые ещё не обработаны.
 
-        for a, b, w in edges:
-            if a == cur:
-                nxt = b
-            elif b == cur:
-                nxt = a
-            else:
-                continue
+    while unvisited:
+        # 1. берём непосещённую станцию с наименьшим временем
+        current = min(unvisited, key=lambda s: time[s])
+        if time[current] == INF:     # до остальных не добраться
+            break
+        unvisited.remove(current)
 
-            new_time = dist[cur] + w
-            if nxt not in dist or new_time < dist[nxt]:
-                dist[nxt] = new_time
-                prev[nxt] = cur
-                queue.append(nxt)
+        # 2. пробуем улучшить время до её соседей
+        for neighbor, w in graph[current].items():
+            if time[current] + w < time[neighbor]:
+                time[neighbor] = time[current] + w
+                prev[neighbor] = current
 
-    if end not in dist:
-        return None, None
+    if time[end] == INF:
+        return None, INF
 
+    # 3. восстанавливаем путь: идём от конца к началу по prev
     path = [end]
     while path[-1] != start:
         path.append(prev[path[-1]])
-    path.reverse()
+    return path[::-1], time[end]
 
-    return path, dist[end]
 
+# ---------- Ввод / вывод ----------
 print("Станции метро:")
-for station in sorted({s for a, b, _ in edges for s in (a, b)}):
-    print("  ", station)
-print("\nДля выхода введите 'выход'\n")
+for station in sorted(graph):
+    print(" ", station)
+print()
 
-while True:
-    start = input("Начальная станция: ").strip()
-    if start == "выход":
-        break
-    end = input("Конечная станция: ").strip()
+line = input("Вход (например: Спасская, Пушкинская): ")
+start, end = [s.strip() for s in line.split(",")]
 
-    path, total = shortest_path(start, end)
+if start not in graph or end not in graph:
+    print("Станция не найдена")
+else:
+    path, total = dijkstra(start, end)
     if path is None:
-        print("Станция не найдена или пути нет\n")
+        print("Путь не найден")
     else:
-        print(" -> ".join(path), "-", total, "минут\n")
+        print("->".join(path) + ", " + str(total) + " минут")
