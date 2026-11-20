@@ -21,7 +21,7 @@ def build_tree(values):
         # левый потомок
         if i < len(values) and values[i] is not None:
             node.left = Node(values[i])
-            queue.append(node.left)
+            queue.append(node.left)        # теперь ему тоже будем искать детей
         i += 1
 
         # правый потомок
